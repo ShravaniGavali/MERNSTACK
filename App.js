@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const logger = require('./middleware/logger')
 const authRouter = require('./routes/authentication')
 const connectdb = require('./config/db')
+const profileRouter = require('./Routes/profile')
 // var bodyParser = require('body-parser')
 const app = express()
 dotenv.config()
@@ -18,6 +19,7 @@ app.get('/greetings', (req, res) => {
 })
 
 app.use('/api/auth', authRouter)
+app.use('/api/profile', profileRouter)
 
 app.listen(process.env.PORT, (error) => {
   if (error) {
